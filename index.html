@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARG</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id = "container"> 
+        <img src = 'cézár.jpg' id = "cézár"> 
+        <div id = "kód"></div>
+        <div id = "színek">
+            <div id = "red"></div>
+            <div id = "blu"></div>
+            <div id = "grn"></div>
+        </div>
+    </div>
+
+    <script>
+
+        onclick = (e) => {
+            if(e.srcElement.id === "red" || e.srcElement.id === "grn" || e.srcElement.id === "blu") {
+                if(e.srcElement.id == code[0]) {
+                    code.splice(0, 1)
+                    // console.log(code)
+                    if(code.length == 0) {
+                        alert("nice")
+                        window.location = 'https://youtube.com'
+                    }
+                }
+                else {
+                    newCode()
+                }
+            }
+            else if(e.srcElement.id === "cézár") {
+                alert("smh, most nem jár a segítség")
+            }
+        }
+
+        let colorlist = ["red", "grn", "blu"]
+        let code = []
+
+        onload = (e) => {
+            console.log(e)
+            console.log("e")
+            newCode()
+        }
+
+        console.log(code);
+
+        var newCode = () => {
+            code = []
+            for(i = 0; i < 20; i++) {
+                code.push(colorlist[Math.floor(Math.random()*3)])
+            }
+            var codeText = ""
+            for(i of code) {
+                    codeText += caesarify(i, 3) + " "
+                }
+                console.log(codeText)
+            document.getElementById("kód").innerText = codeText
+        }
+
+        var caesarify = (word, shift) => {
+            var abc = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+            var proxy = new Proxy(abc, {
+                get(target, prop) {
+                    if (!isNaN(prop)) {
+                        prop = parseInt(prop, 10);
+                        if (prop < 0) {
+                            prop += target.length;
+                        }
+                    }
+                    return target[prop];
+                }
+            });
+            var newWord = ""
+            for(i of word) {
+                newWord += proxy[abc.findIndex(element => element === i)+shift]
+            }
+            return newWord
+        }
+
+    </script> 
+</body>
+</html>
