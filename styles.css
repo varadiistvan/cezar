@@ -30,19 +30,19 @@ body {
 
 #red {
     margin: 5px;
-    width: 10vmin;
-    height: 10vmin;
+    width: 25vmin;
+    height: 25vmin;
     background-color: red;
 }
 #blu {
     margin: 5px;
-    width: 10vmin;
-    height: 10vmin;
+    width: 25vmin;
+    height: 25vmin;
     background-color: blue;
 }
 #grn {
     margin: 5px;
-    width: 10vmin;
-    height: 10vmin;
+    width: 25vmin;
+    height: 25vmin;
     background-color: green;
 }
